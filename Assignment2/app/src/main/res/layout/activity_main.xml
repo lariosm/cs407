@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#043FAF"
+    android:background="#3173F8"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/app_name"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,10 +22,10 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textPeople"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/labelPeople"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,10 +35,10 @@
         app:layout_constraintVertical_bias="0.453" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textBillAmt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/labelBillAmt"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,10 +48,10 @@
         app:layout_constraintVertical_bias="0.251" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textTipPercent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/labelTipPercent"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,10 +61,10 @@
         app:layout_constraintVertical_bias="0.353" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textTipAmt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/labelTipAmt"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,10 +74,10 @@
         app:layout_constraintVertical_bias="0.692" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textBillTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/labelBillTotal"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,10 +87,10 @@
         app:layout_constraintVertical_bias="0.773" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textTotalPerPerson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/labelTotalPerPerson"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,10 +100,11 @@
         app:layout_constraintVertical_bias="0.856" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editBillInput"
         android:layout_width="100dp"
         android:layout_height="43dp"
         android:ems="10"
+        android:hint="@string/labelBillInput"
         android:inputType="numberDecimal"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -114,10 +115,11 @@
         app:layout_constraintVertical_bias="0.235" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editTipInput"
         android:layout_width="100dp"
         android:layout_height="43dp"
         android:ems="10"
+        android:hint="@string/labelTipInput"
         android:inputType="number"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -142,10 +144,10 @@
         app:layout_constraintVertical_bias="0.528" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textPeopleSlider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/labelPeopleSlider"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
