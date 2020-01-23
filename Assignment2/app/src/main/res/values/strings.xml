@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Tip Calculator</string>
-    <string name="labelBillAmt">Bill amount</string>
+    <string name="labelBillAmt">Amount due</string>
     <string name="labelTipPercent">Percent to tip</string>
     <string name="labelPeople">Number of people</string>
     <string name="labelTipAmt">Amount to tip</string>
-    <string name="labelTotalPerPerson">Tip per person</string>
-    <string name="labelBillTotal">Total to tip</string>
+    <string name="labelTotalPerPerson">Total per person</string>
+    <string name="labelBillTotal">Total to pay</string>
     <string name="labelBillInput">$24.98</string>
     <string name="labelTipInput">15%</string>
     <string name="labelPeopleSlider">1</string>
