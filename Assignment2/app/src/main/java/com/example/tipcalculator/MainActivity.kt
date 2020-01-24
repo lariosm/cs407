@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             val peopleCount = if(value.text.isNotEmpty()) value.text.toString().toInt() else 1
 
             val amtToTip : Double = (totalAmountDue * (percentToTip / HUNDRED_PERCENT))
-            val totalExpense : Double = (totalAmountDue * (percentToTip / HUNDRED_PERCENT)) + totalAmountDue
+            val totalExpense  = amtToTip + totalAmountDue
             val perPersonTotal = totalExpense / peopleCount
 
             textTipValue.text = String.format("$%.2f", amtToTip)
