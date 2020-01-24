@@ -17,6 +17,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="86dp"
+            android:contentDescription="@string/app_name"
             app:srcCompat="@drawable/ic_tipslogo" />
 
         <LinearLayout
@@ -106,7 +107,7 @@
                 android:layout_height="22dp"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:max="15"
+                android:max="14"
                 android:progress="0" />
 
             <TextView
@@ -134,6 +135,15 @@
                 android:text="@string/labelTipAmt"
                 android:textColor="#000000"
                 android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textTipValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="5"
+                android:text="@string/labelNotCalculated"
+                android:textAlignment="textEnd" />
         </LinearLayout>
 
         <LinearLayout
@@ -150,6 +160,15 @@
                 android:text="@string/labelBillTotal"
                 android:textColor="#000000"
                 android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textBillValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:text="@string/labelNotCalculated"
+                android:textAlignment="textEnd" />
         </LinearLayout>
 
         <LinearLayout
@@ -167,6 +186,15 @@
                 android:text="@string/labelTotalPerPerson"
                 android:textColor="#000000"
                 android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textPerPersonValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:text="@string/labelNotCalculated"
+                android:textAlignment="textEnd" />
         </LinearLayout>
 
     </LinearLayout>
