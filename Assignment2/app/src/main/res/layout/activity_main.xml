@@ -64,18 +64,16 @@
                 android:textAlignment="center"
                 android:textColor="#000000" />
 
-            <EditText
-                android:id="@+id/editTipInput"
+            <Spinner
+                android:id="@+id/tipDropDown"
                 android:layout_width="match_parent"
-                android:layout_height="43dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/labelTipInput"
-                android:inputType="number"
-                android:textAlignment="center"
-                android:textColor="#000000" />
+                android:entries="@array/tip_selection"
+                android:spinnerMode="dropdown"
+                android:textAlignment="center" />
 
         </LinearLayout>
 

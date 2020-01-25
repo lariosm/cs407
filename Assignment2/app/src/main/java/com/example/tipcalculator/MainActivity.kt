@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.SeekBar
-import android.widget.TextView
+import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val HUNDRED_PERCENT = 100.00
@@ -22,12 +21,17 @@ class MainActivity : AppCompatActivity() {
         slider = findViewById(R.id.peopleSlider) as SeekBar
         value = findViewById(R.id.textPeopleValue) as TextView
 
+        val tipSpinner = findViewById<Spinner>(R.id.tipDropDown)
+        val tipList = resources.getStringArray(R.array.tip_selection)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tipList)
+        var tipSelected = ""
+
         fun calculateExpense() {
             val totalAmountDue : Double = if(editBillInput.text.isNotEmpty()) editBillInput.text.toString().toDouble() else 24.98
-            val percentToTip = if(editTipInput.text.isNotEmpty()) editTipInput.text.toString().toInt() else 15
+            val percentToTip = if(tipSelected.isNotEmpty()) tipSelected.toInt() else 5
             val peopleCount = if(value.text.isNotEmpty()) value.text.toString().toInt() else 1
 
-            val amtToTip : Double = (totalAmountDue * (percentToTip / HUNDRED_PERCENT))
+            val amtToTip : Double = totalAmountDue * (percentToTip / HUNDRED_PERCENT)
             val totalExpense  = amtToTip + totalAmountDue
             val perPersonTotal = totalExpense / peopleCount
 
@@ -37,19 +41,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         editBillInput.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                calculateExpense()
-            }
-
-        })
-
-        editTipInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -74,5 +65,18 @@ class MainActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
             }
         })
+
+        tipSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                tipSelected = tipList[position]
+                calculateExpense()
+            }
+
+        }
+
+        tipSpinner.adapter = adapter
     }
 }
