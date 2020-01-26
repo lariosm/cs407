@@ -8,8 +8,6 @@ import android.view.View
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 
-const val HUNDRED_PERCENT = 100.00
-
 class MainActivity : AppCompatActivity() {
     lateinit var slider : SeekBar
     lateinit var value : TextView
@@ -23,9 +21,10 @@ class MainActivity : AppCompatActivity() {
 
         val tipSpinner = findViewById<Spinner>(R.id.tipDropDown)
         val tipList = resources.getStringArray(R.array.tip_selection)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tipList)
+        //val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tipList)
         var tipSelected = ""
 
+        /*
         fun expenseCruncher(amountDue : Double, percentTip: Int, numPeople : Int) : Triple<Double, Double, Double> {
             val amtToTip : Double = amountDue * (percentTip / HUNDRED_PERCENT)
             val totalExpense  = amtToTip + amountDue
@@ -33,13 +32,14 @@ class MainActivity : AppCompatActivity() {
 
             return Triple(amtToTip, totalExpense, perPersonTotal)
         }
+         */
 
         fun calculateExpense() {
             val totalAmountDue : Double = if(editBillInput.text.isNotEmpty()) editBillInput.text.toString().toDouble() else 24.98
             val percentToTip = if(tipSelected.isNotEmpty()) tipSelected.toInt() else 5
             val peopleCount = if(value.text.isNotEmpty()) value.text.toString().toInt() else 1
 
-            val (tipAmount, totalAmount, splitAmount) = expenseCruncher(totalAmountDue, percentToTip, peopleCount)
+            val (tipAmount, totalAmount, splitAmount) = TipCalculator().expenseCruncher(totalAmountDue, percentToTip, peopleCount)
 
             textTipValue.text = String.format("$%.2f", tipAmount)
             textBillValue.text = String.format("$%.2f", totalAmount)
@@ -83,6 +83,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        tipSpinner.adapter = adapter
+        //tipSpinner.adapter = adapter
     }
 }
