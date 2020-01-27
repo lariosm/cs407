@@ -1,5 +1,6 @@
 <resources>
     <string-array name="tip_selection">
+        <item>0</item>
         <item>5</item>
         <item>10</item>
         <item>15</item>
