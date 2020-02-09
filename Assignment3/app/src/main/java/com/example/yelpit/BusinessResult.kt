@@ -2,6 +2,7 @@ package com.example.yelpit
 
 import com.google.gson.annotations.SerializedName
 
+//GET: /businesses/search
 data class BusinessResult(
     @SerializedName("rating") val rating: Double,
     @SerializedName("id") val id: String,
