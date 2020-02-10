@@ -49,7 +49,7 @@ object BusinessesRepository {
     }
 
     fun getBusiness(
-        id: String = "WavvLdfdP6g8aZTtbBQHTw",
+        id: String = "WavvLdfdP6g8aZTtbBQHTw", //Need to not hardcode this soon
         onSuccess: (business: GetBusinessResponse) -> Unit,
         onError: () -> Unit
     ) {
