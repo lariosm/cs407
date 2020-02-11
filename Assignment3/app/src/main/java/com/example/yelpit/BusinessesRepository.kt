@@ -20,11 +20,11 @@ object BusinessesRepository {
     }
 
     fun getBusinessResults(
-        results: Int = 10,
+        offset: Int = 1,
         onSuccess: (businessResults: List<BusinessResult>) -> Unit,
         onError: () -> Unit
     ) {
-        api.getBusinessResults(results = results)
+        api.getBusinessResults(offset = offset)
             .enqueue(object : Callback<GetBusinessResultResponse> {
                 override fun onResponse(
                     call: Call<GetBusinessResultResponse>,

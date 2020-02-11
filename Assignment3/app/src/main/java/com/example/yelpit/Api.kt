@@ -10,7 +10,8 @@ interface Api {
     )
     fun getBusinessResults(
         @Query("location") location: String = "Monmouth, OR",
-        @Query("limit") results: Int
+        @Query("limit") results: Int = 20,
+        @Query("offset") offset: Int
     ): Call<GetBusinessResultResponse>
 
     @GET("businesses/{id}")
