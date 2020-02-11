@@ -12,7 +12,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 
 class BusinessAdapter(
-    private var businesses: MutableList<BusinessResult>
+    private var businesses: MutableList<BusinessResult>,
+    private val onBusinessClick: (businessResult: BusinessResult) -> Unit
 ): RecyclerView.Adapter<BusinessAdapter.BusinessViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusinessViewHolder {
@@ -54,6 +55,7 @@ class BusinessAdapter(
             businessName.text = business.name
             businessRating.rating = business.rating
             businessReviewCount.text = "${business.reviewCount} reviews"
+            itemView.setOnClickListener {onBusinessClick.invoke(business)}
         }
     }
 }

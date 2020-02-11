@@ -13,12 +13,4 @@ interface Api {
         @Query("limit") results: Int = 20,
         @Query("offset") offset: Int
     ): Call<GetBusinessResultResponse>
-
-    @GET("businesses/{id}")
-    @Headers(
-        "Authorization: Bearer SAiECnw8LkfxS9IJmUa_zGMjllgf38pAFGT8AJqsq5He4a0GAil8WDQoyJ_g4uCjGFCFruLARfViymp98svAS3GZme16gJJ9XkItJaqpeUL1L7Vg6lOTK76OtyY7XnYx"
-    )
-    fun getBusiness(
-        @Path("id") id: String
-    ): Call<GetBusinessResponse>
 }

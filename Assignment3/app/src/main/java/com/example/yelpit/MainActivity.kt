@@ -1,9 +1,9 @@
 package com.example.yelpit
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var businessResults: RecyclerView
     private lateinit var businessResultsAdapter: BusinessAdapter
     private lateinit var businessResultsLayoutMgr: LinearLayoutManager
-    private lateinit var businessName : TextView
 
     private var businessResultsOffset = 1
 
@@ -28,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             false
         )
         businessResults.layoutManager = businessResultsLayoutMgr
-        businessResultsAdapter = BusinessAdapter(mutableListOf())
+        businessResultsAdapter = BusinessAdapter(mutableListOf()) { business -> showBusinessDetails(business)}
         businessResults.adapter = businessResultsAdapter
 
         BusinessesRepository.getBusinessResults(
@@ -37,21 +36,13 @@ class MainActivity : AppCompatActivity() {
             onError = ::onError
         )
 
-        BusinessesRepository.getBusiness(
-            onSuccess = ::onBusinessFetched,
-            onError = ::onError
-        )
-
         getBusinessResults()
     }
 
     private fun onBusinessesFetched(businesses: List<BusinessResult>) {
+        Log.d("MainActivity:", "$businesses")
         businessResultsAdapter.appendBusinesses(businesses)
         attachBusinessResultsOnScrollListener()
-    }
-
-    private fun onBusinessFetched(business: GetBusinessResponse) {
-        Log.d("MainActivity", "Business $business")
     }
 
     private fun onError() {
@@ -89,5 +80,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun showBusinessDetails(business: BusinessResult) {
+        val intent = Intent(this, BusinessDetailsActivity::class.java)
+        intent.putExtra(BUSINESS_BACKDROP, business.imageURL)
+        startActivity(intent)
     }
 }

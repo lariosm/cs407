@@ -47,33 +47,4 @@ object BusinessesRepository {
                 }
             })
     }
-
-    fun getBusiness(
-        id: String = "WavvLdfdP6g8aZTtbBQHTw", //Need to not hardcode this soon
-        onSuccess: (business: GetBusinessResponse) -> Unit,
-        onError: () -> Unit
-    ) {
-        api.getBusiness(id = id)
-            .enqueue(object : Callback<GetBusinessResponse> {
-                override fun onResponse(
-                    call: Call<GetBusinessResponse>,
-                    response: Response<GetBusinessResponse>
-                ) {
-                    if(response.isSuccessful) {
-                        val responseBody = response.body()
-
-                        if(responseBody != null) {
-                            onSuccess.invoke(responseBody)
-                        }
-                        else {
-                            onError.invoke()
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<GetBusinessResponse>, t: Throwable) {
-                    onError.invoke()
-                }
-            })
-    }
 }
