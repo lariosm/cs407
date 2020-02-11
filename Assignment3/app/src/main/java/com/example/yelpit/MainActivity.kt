@@ -70,9 +70,6 @@ class MainActivity : AppCompatActivity() {
                 val firstVisibleItem = businessResultsLayoutMgr.findFirstVisibleItemPosition()
 
                 if(firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
-                    Log.d("Main: totalItemCount", "$totalItemCount")
-                    Log.d("Main: visibleItemCount", "$visibleItemCount")
-                    Log.d("Main: firstVisibleItem", "$firstVisibleItem")
                     //Disable scroll listener, increment businessResultsLimit and call function
                     businessResults.removeOnScrollListener(this)
                     businessResultsOffset += 20
@@ -85,6 +82,15 @@ class MainActivity : AppCompatActivity() {
     private fun showBusinessDetails(business: BusinessResult) {
         val intent = Intent(this, BusinessDetailsActivity::class.java)
         intent.putExtra(BUSINESS_BACKDROP, business.imageURL)
+        intent.putExtra(BUSINESS_NAME, business.name)
+        intent.putExtra(BUSINESS_RATING, business.rating)
+        intent.putExtra(BUSINESS_REVIEWCOUNT, "${business.reviewCount} reviews")
+        intent.putExtra(BUSINESS_PHONE, "Phone: ${business.phone}")
+        intent.putExtra(BUSINESS_CITY, "${business.location.city},")
+        intent.putExtra(BUSINESS_COUNTRY, business.location.country)
+        intent.putExtra(BUSINESS_STATE, business.location.state)
+        intent.putExtra(BUSINESS_ADDRESS, business.location.address)
+        intent.putExtra(BUSINESS_ZIPCODE, business.location.zipCode)
         startActivity(intent)
     }
 }

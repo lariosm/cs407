@@ -30,7 +30,8 @@
                 android:id="@+id/business_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="#000" />
+                android:textColor="#000"
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
