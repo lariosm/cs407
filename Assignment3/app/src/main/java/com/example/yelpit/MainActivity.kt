@@ -64,12 +64,15 @@ class MainActivity : AppCompatActivity() {
                 val totalItemCount = businessResultsLayoutMgr.itemCount
 
                 //Current number of child views attached to RecyclerView
-                val visibleItemCount = businessResultsLayoutMgr.childCount
+                val visibleItemCount = businessResultsLayoutMgr.findLastVisibleItemPosition() - businessResultsLayoutMgr.findFirstVisibleItemPosition()
 
                 //Position of leftmost visible item in list
                 val firstVisibleItem = businessResultsLayoutMgr.findFirstVisibleItemPosition()
 
+
                 if(firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
+                    Log.d("Main: visibleItemCount:", "$visibleItemCount")
+                    Log.d("Main: totalItemCount:", "$totalItemCount")
                     //Disable scroll listener, increment businessResultsLimit and call function
                     businessResults.removeOnScrollListener(this)
                     businessResultsOffset += 20
