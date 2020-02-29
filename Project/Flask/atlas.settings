@@ -1,0 +1,4 @@
+DB_NAME="listing_db"
+DB_USER="mlarios1"
+DB_PASSWORD="wolfit"
+DB_HOST="mongodb+srv://m12-dgdwc.gcp.mongodb.net/"
