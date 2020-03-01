@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "809141889462",
+    "firebase_url": "https://yelpappclone-96088.firebaseio.com",
+    "project_id": "yelpappclone-96088",
+    "storage_bucket": "yelpappclone-96088.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809141889462:android:dd16dc99932935891b3917",
+        "android_client_info": {
+          "package_name": "com.example.yelpit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809141889462-b8eruuqbboc58c83govlnme7k3652nvo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWv7b0_uOMCD8q5vKl4Ni9HhdbKI3jhhQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809141889462-b8eruuqbboc58c83govlnme7k3652nvo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
