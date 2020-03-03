@@ -4,9 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +18,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var businessResultsLayoutMgr: LinearLayoutManager
 
     private var businessResultsOffset = 1
+
+    private var mAuth: FirebaseAuth? = null
+    private var btnLogout: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             onError = ::onError
         )
 
+        initialize()
         getBusinessResults()
     }
 
@@ -94,6 +101,22 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(BUSINESS_STATE, business.location.state)
         intent.putExtra(BUSINESS_ADDRESS, business.location.address)
         intent.putExtra(BUSINESS_ZIPCODE, business.location.zipCode)
+        startActivity(intent)
+    }
+
+    private fun initialize() {
+        btnLogout = findViewById<View>(R.id.btn_logout) as Button
+        mAuth = FirebaseAuth.getInstance()
+        btnLogout!!.setOnClickListener { logoutUser() }
+    }
+
+    private fun logoutUser() {
+        mAuth!!.signOut()
+        updateUI()
+    }
+
+    private fun updateUI() {
+        val intent = Intent(this@MainActivity, LoginActivity::class.java)
         startActivity(intent)
     }
 }

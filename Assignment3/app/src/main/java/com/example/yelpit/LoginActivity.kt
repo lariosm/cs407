@@ -59,7 +59,6 @@ class LoginActivity : AppCompatActivity() {
             Log.d(TAG, "Logging in user.")
             mAuth!!.signInWithEmailAndPassword(email!!, password!!)
                 .addOnCompleteListener(this) { task ->
-                    //mProgressBar!!.hide()
                     if (task.isSuccessful) {
                         // Sign in success, update UI with signed-in user's information
                         Log.d(TAG, "signInWithEmail:success")
