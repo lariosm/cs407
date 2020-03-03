@@ -45,7 +45,7 @@ def listing_helper(listing_object):
 
 
 # Returns all posted listings
-@app.route('/api/activities', methods=["GET"])
+@app.route('/api/listings', methods=["GET"])
 def activities():
     logs = Listing.objects[:10]  # Returns first 10 entries
     log_list = [listing_helper(log) for log in logs]
@@ -53,7 +53,7 @@ def activities():
 
 
 # Returns a single listing
-@app.route('/api/activities/<string:str_id>', methods=["GET"])
+@app.route('/api/listings/<string:str_id>', methods=["GET"])
 def activity(str_id):
     try:
         # Queries database from string input and save it
