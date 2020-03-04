@@ -18,7 +18,8 @@ import com.google.firebase.database.ValueEventListener
 
 class BusinessAdapter(
     private var businesses: MutableList<BusinessResult>,
-    private val onBusinessClick: (businessResult: BusinessResult) -> Unit
+    private val onBusinessClick: (businessResult: BusinessResult) -> Unit,
+    private val myLikedBusinesses : MutableList<LikeBusiness>
 ): RecyclerView.Adapter<BusinessAdapter.BusinessViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusinessViewHolder {
@@ -52,35 +53,47 @@ class BusinessAdapter(
             val origImageURL = business.imageURL
             val scaledImageURL = origImageURL.replace("o.jpg", "l.jpg")
             val toggleButton = itemView.findViewById<ToggleButton>(R.id.favoriteButton)
-            toggleButton.setOnClickListener {
+            toggleButton.setOnCheckedChangeListener { buttonView, isChecked ->
+
                 val user = FirebaseAuth.getInstance().currentUser
-                val lIkeBusiness = LikeBusiness(user!!.uid, business.id)
+                val lIkeBusiness = LikeBusiness(null, user!!.uid, business.id)
                 val database = FirebaseDatabase.getInstance()
-                val newLikeReference = database.reference.child("Users").push().key
-                //val newLike = lIkeBusiness.copy(newLikeReference.key.toString())
-                database.reference.child("Users").child(newLikeReference.toString()).setValue(lIkeBusiness)
 
 
-            }
+                if (isChecked) {
 
-            val user = FirebaseAuth.getInstance().currentUser
-            var mySnapshot : ArrayList<LikeBusiness>? = ArrayList<LikeBusiness>()
-            val database = FirebaseDatabase.getInstance()
-            database.reference.addValueEventListener(object : ValueEventListener {
-                override fun onCancelled(p0: DatabaseError) {
+                    var exists = false
+                    myLikedBusinesses.forEach {
+                        if (it.businessID == business.id) {
+                            exists = true
+                        }
+                    }
+
+                    if (!exists) {
+                        val newLikeReference = database.reference.child("Users").push().key
+                        lIkeBusiness.key = newLikeReference
+                        database.reference.child("Users").child(newLikeReference.toString()).setValue(lIkeBusiness)
+                        myLikedBusinesses.add(lIkeBusiness)
+                    }
+
 
                 }
+                else {
 
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for (like in snapshot.children) {
-                        mySnapshot?.add(snapshot.getValue(LikeBusiness::class.java)!!)
+                    myLikedBusinesses.forEach {
+                        if (it.businessID == business.id) {
+                            lIkeBusiness.key = it.key.toString()
+                            database.reference.child("Users").child(it.key.toString()).removeValue()
+                            myLikedBusinesses.remove(lIkeBusiness)
+
+                            myLikedBusinesses.removeIf { liked -> liked.key.equals(it.key.toString()) }
+                        }
                     }
                 }
-
-            })
+            }
 
             var liked = false
-            mySnapshot?.forEach {
+            myLikedBusinesses?.forEach {
                 if(business.id == it.businessID) {
                     liked = true
                 }

@@ -10,6 +10,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +37,29 @@ class MainActivity : AppCompatActivity() {
             false
         )
         businessResults.layoutManager = businessResultsLayoutMgr
-        businessResultsAdapter = BusinessAdapter(mutableListOf()) { business -> showBusinessDetails(business)}
+
+        val mySnapshot = ArrayList<LikeBusiness>()
+        val database = FirebaseDatabase.getInstance().reference
+
+        val userListener = database.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (like in snapshot.children) {
+                    if (like.key == "Users") {
+                        for (theLike in like.children) {
+                            val likedBusiness = theLike.getValue(LikeBusiness::class.java!!)
+
+                            mySnapshot?.add(likedBusiness!!)
+                        }
+                    }
+                }
+            }
+        })
+
+        businessResultsAdapter = BusinessAdapter(mutableListOf(), { business -> showBusinessDetails(business) }, mySnapshot)
         businessResults.adapter = businessResultsAdapter
 
         BusinessesRepository.getBusinessResults(
