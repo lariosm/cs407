@@ -11,10 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 
 class BusinessAdapter(
     private var businesses: MutableList<BusinessResult>,
@@ -53,7 +50,7 @@ class BusinessAdapter(
             val origImageURL = business.imageURL
             val scaledImageURL = origImageURL.replace("o.jpg", "l.jpg")
             val toggleButton = itemView.findViewById<ToggleButton>(R.id.favoriteButton)
-            toggleButton.setOnCheckedChangeListener { buttonView, isChecked ->
+            toggleButton.setOnCheckedChangeListener { _, isChecked ->
 
                 val user = FirebaseAuth.getInstance().currentUser
                 val lIkeBusiness = LikeBusiness(null, user!!.uid, business.id)

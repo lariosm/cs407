@@ -39,25 +39,6 @@ class MainActivity : AppCompatActivity() {
         businessResults.layoutManager = businessResultsLayoutMgr
 
         val mySnapshot = ArrayList<LikeBusiness>()
-        val database = FirebaseDatabase.getInstance().reference
-
-        val userListener = database.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (like in snapshot.children) {
-                    if (like.key == "Users") {
-                        for (theLike in like.children) {
-                            val likedBusiness = theLike.getValue(LikeBusiness::class.java!!)
-
-                            mySnapshot?.add(likedBusiness!!)
-                        }
-                    }
-                }
-            }
-        })
 
         businessResultsAdapter = BusinessAdapter(mutableListOf(), { business -> showBusinessDetails(business) }, mySnapshot)
         businessResults.adapter = businessResultsAdapter
