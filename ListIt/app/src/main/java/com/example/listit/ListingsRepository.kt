@@ -9,7 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ListingsRepository {
     private val api: API
     init {
-
         val retrofit = Retrofit.Builder()
             .baseUrl("https://listitapi.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -17,12 +16,12 @@ object ListingsRepository {
         api = retrofit.create(API::class.java)
     }
 
-    fun getBusinessResults(
+    fun getListingResults(
         // offset: Int = 1,
-        onSuccess: (businessResults: List<ListingResult>) -> Unit,
+        onSuccess: (listingResults: List<Listing>) -> Unit,
         onError: () -> Unit
     ) {
-        api.getBusinessResults()
+        api.getListingResults()
             .enqueue(object : Callback<GetListingResponse> {
                 override fun onResponse(
                     call: Call<GetListingResponse>,

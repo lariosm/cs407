@@ -2,7 +2,7 @@ package com.example.listit
 
 import com.google.gson.annotations.SerializedName
 
-data class ListingResult(
+data class Listing(
     @SerializedName("id") val id: String,
     @SerializedName("username") val userName: String,
     @SerializedName("timestamp") val timestamp: String,
