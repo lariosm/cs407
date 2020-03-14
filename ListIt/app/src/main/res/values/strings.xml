@@ -11,4 +11,6 @@
     <string name="title_hint">i.e. Samsung Galaxy S10</string>
     <string name="listing_title">Listing title</string>
     <string name="submit">Create listing</string>
+    <string name="heading">Items for sale</string>
+    <string name="subheading">Have a look around</string>
 </resources>

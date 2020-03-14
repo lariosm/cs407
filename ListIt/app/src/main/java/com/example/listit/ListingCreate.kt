@@ -40,8 +40,7 @@ class ListingCreate : AppCompatActivity() {
     private fun checkPermission(): Boolean {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
             || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            // Permission is not granted
-            return false
+            return false // Permission is not granted
         }
         return true
     }

@@ -47,40 +47,6 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, getString(R.string.error_fetch_listings), Toast.LENGTH_SHORT).show()
     }
 
-    private fun getListingResults() {
-        ListingsRepository.getListingResults(
-            ::onListingsFetched,
-            ::onError
-        )
-    }
-
-    /*
-    private fun attachBusinessResultsOnScrollListener() {
-        listing.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                //Total number of businesses inside BusinessAdapter
-                val totalItemCount = listingLayoutMgr.itemCount
-
-                //Current number of child views attached to RecyclerView
-                val visibleItemCount = listingLayoutMgr.findLastVisibleItemPosition() - listingLayoutMgr.findFirstVisibleItemPosition()
-
-                //Position of leftmost visible item in list
-                val firstVisibleItem = businessResultsLayoutMgr.findFirstVisibleItemPosition()
-
-
-                if(firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
-                    Log.d("Main: visibleItemCount:", "$visibleItemCount")
-                    Log.d("Main: totalItemCount:", "$totalItemCount")
-                    //Disable scroll listener, increment businessResultsLimit and call function
-                    listing.removeOnScrollListener(this)
-                    listingOffset += 20
-                    getListingResults()
-                }
-            }
-        })
-    }
-    */
-
     private fun showListingDetails(listing: Listing) {
         val intent = Intent(this, ListingDetailsActivity::class.java)
         // static backdrop... for now
