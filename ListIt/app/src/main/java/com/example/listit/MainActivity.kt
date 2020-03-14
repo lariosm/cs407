@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var listing: RecyclerView
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity() {
             onSuccess = ::onListingsFetched,
             onError = ::onError
         )
+
+        add_listing.setOnClickListener { startActivity(Intent(this, ListingCreate::class.java)) }
     }
 
     private fun onListingsFetched(listings: List<Listing>) {

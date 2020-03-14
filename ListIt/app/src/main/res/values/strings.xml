@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">ListIt</string>
     <string name="error_fetch_listings">Limited or no network availability. Please check your connection.</string>
+    <string name="create_listing">Create a listing</string>
+    <string name="camera_upload">Camera</string>
+    <string name="gallery_upload">Gallery</string>
+    <string name="description_hint">i.e. Used, but in excellent condition.</string>
+    <string name="description_title">Description</string>
+    <string name="price_hint">i.e. $998</string>
+    <string name="price_title">Price</string>
+    <string name="title_hint">i.e. Samsung Galaxy S10</string>
+    <string name="listing_title">Listing title</string>
+    <string name="submit">Create listing</string>
 </resources>
