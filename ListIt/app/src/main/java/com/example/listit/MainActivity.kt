@@ -54,8 +54,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(LISTING_NAME, listing.listingTitle)
         intent.putExtra(LISTING_PRICE, "$${listing.askingPrice}")
         intent.putExtra(LISTING_DESCRIPTION, listing.description)
-        intent.putExtra(LISTING_CITY, "${listing.city},")
-        intent.putExtra(LISTING_STATE, listing.state)
+        intent.putExtra(LISTING_LOCATION, "${listing.city}, ${listing.state}")
         intent.putExtra(LISTING_USER, listing.userName)
         startActivity(intent)
     }

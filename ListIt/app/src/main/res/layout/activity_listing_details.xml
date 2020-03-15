@@ -53,9 +53,16 @@
 
                 <TextView
                     android:id="@+id/details_listing_price"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:background="@drawable/textview_border"
                     android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/details_listing_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="#000"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -69,20 +76,6 @@
                         android:textColor="#000"/>
 
                     <TextView
-                        android:id="@+id/details_listing_city"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="4dp"
-                        android:textColor="#000"/>
-
-                    <TextView
-                        android:id="@+id/details_listing_state"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="4dp"
-                        android:textColor="#000"/>
-
-                    <TextView
                         android:id="@+id/details_listing_user"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -90,18 +83,6 @@
                         android:textColor="#000"/>
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/details_business_country"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="#000"/>
-
-                <TextView
-                    android:id="@+id/details_business_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="16dp"
-                    android:textColor="#000"/>
             </LinearLayout>
 
         </LinearLayout>

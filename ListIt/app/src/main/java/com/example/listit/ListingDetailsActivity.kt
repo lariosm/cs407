@@ -11,8 +11,7 @@ const val LISTING_BACKDROP = "extra_listing_backdrop"
 const val LISTING_NAME = "extra_listing_name"
 const val LISTING_PRICE = "extra_listing_price"
 const val LISTING_DESCRIPTION = "extra_listing_description"
-const val LISTING_CITY = "extra_listing_city"
-const val LISTING_STATE = "extra_listing_state"
+const val LISTING_LOCATION = "extra_listing_location"
 const val LISTING_USER = "extra_listing_user"
 
 class ListingDetailsActivity : AppCompatActivity() {
@@ -20,8 +19,7 @@ class ListingDetailsActivity : AppCompatActivity() {
     private lateinit var listingName: TextView
     private lateinit var listingPrice: TextView
     private lateinit var listingDescription: TextView
-    private lateinit var listingCity: TextView
-    private lateinit var listingState: TextView
+    private lateinit var listingLocation: TextView
     private lateinit var listingUser: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +30,7 @@ class ListingDetailsActivity : AppCompatActivity() {
         listingName = findViewById(R.id.details_listing_name)
         listingPrice = findViewById(R.id.details_listing_price)
         listingDescription = findViewById(R.id.details_listing_description)
-        listingCity = findViewById(R.id.details_listing_city)
-        listingState = findViewById(R.id.details_listing_state)
+        listingLocation = findViewById(R.id.details_listing_location)
         listingUser = findViewById(R.id.details_listing_user)
 
         val extras = intent.extras
@@ -57,8 +54,7 @@ class ListingDetailsActivity : AppCompatActivity() {
         listingName.text = extras.getString(LISTING_NAME, "")
         listingPrice.text = extras.getString(LISTING_PRICE, "")
         listingDescription.text = extras.getString(LISTING_DESCRIPTION, "")
-        listingCity.text = extras.getString(LISTING_CITY, "")
-        listingState.text = extras.getString(LISTING_STATE, "")
+        listingLocation.text = extras.getString(LISTING_LOCATION, "")
         listingUser.text = extras.getString(LISTING_USER, "")
     }
 }
