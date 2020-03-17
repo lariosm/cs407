@@ -64,24 +64,12 @@
                     android:layout_height="match_parent"
                     android:textColor="#000"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/details_listing_description"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/details_listing_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textColor="#000"/>
-
-                    <TextView
-                        android:id="@+id/details_listing_user"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="5dp"
-                        android:textColor="#000"/>
-                </LinearLayout>
+                    android:layout_marginTop="16dp"
+                    android:textColor="#000"/>
 
             </LinearLayout>
 

@@ -12,7 +12,6 @@ const val LISTING_NAME = "extra_listing_name"
 const val LISTING_PRICE = "extra_listing_price"
 const val LISTING_DESCRIPTION = "extra_listing_description"
 const val LISTING_LOCATION = "extra_listing_location"
-const val LISTING_USER = "extra_listing_user"
 
 class ListingDetailsActivity : AppCompatActivity() {
     private lateinit var backdrop: ImageView
@@ -20,7 +19,6 @@ class ListingDetailsActivity : AppCompatActivity() {
     private lateinit var listingPrice: TextView
     private lateinit var listingDescription: TextView
     private lateinit var listingLocation: TextView
-    private lateinit var listingUser: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +29,6 @@ class ListingDetailsActivity : AppCompatActivity() {
         listingPrice = findViewById(R.id.details_listing_price)
         listingDescription = findViewById(R.id.details_listing_description)
         listingLocation = findViewById(R.id.details_listing_location)
-        listingUser = findViewById(R.id.details_listing_user)
 
         val extras = intent.extras
 
@@ -55,6 +52,5 @@ class ListingDetailsActivity : AppCompatActivity() {
         listingPrice.text = extras.getString(LISTING_PRICE, "")
         listingDescription.text = extras.getString(LISTING_DESCRIPTION, "")
         listingLocation.text = extras.getString(LISTING_LOCATION, "")
-        listingUser.text = extras.getString(LISTING_USER, "")
     }
 }

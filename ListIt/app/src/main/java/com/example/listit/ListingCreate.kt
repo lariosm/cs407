@@ -1,6 +1,7 @@
 package com.example.listit
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -180,8 +181,6 @@ class ListingCreate : AppCompatActivity() {
 
         stitchAppClient.auth.loginWithCredential(AnonymousCredential())
             .addOnSuccessListener {
-                //Toast.makeText(this, getString(R.string.mongo_write_success), Toast.LENGTH_LONG).show()
-
                 val mongoClient = stitchAppClient.getServiceClient(
                     RemoteMongoClient.factory,
                     "mongodb-atlas"
@@ -202,9 +201,6 @@ class ListingCreate : AppCompatActivity() {
                 myCollection.insertOne(documentData)
                     .addOnSuccessListener {
                         Toast.makeText(this, getString(R.string.mongo_write_success), Toast.LENGTH_LONG).show()
-
-                        // Commented out as it causes the app to crash!
-                        //MainActivity().listingAdapter.notifyDataSetChanged()
                         super.finish()
                     }
             }

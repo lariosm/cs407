@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class Listing(
     @SerializedName("id") val id: String,
-    @SerializedName("username") val userName: String,
     @SerializedName("timestamp") val timestamp: String,
     @SerializedName("listing_title") val listingTitle: String,
     @SerializedName("description") val description: String,

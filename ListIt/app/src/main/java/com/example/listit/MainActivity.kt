@@ -1,5 +1,6 @@
 package com.example.listit
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -36,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         )
 
         add_listing.setOnClickListener { startActivity(Intent(this, ListingCreate::class.java)) }
-        //add_listing.setOnClickListener { startActivityForResult(Intent(this, ListingCreate::class.java), 1) }
     }
 
     private fun onListingsFetched(listings: List<Listing>) {
@@ -52,12 +52,11 @@ class MainActivity : AppCompatActivity() {
     private fun showListingDetails(listing: Listing) {
         val intent = Intent(this, ListingDetailsActivity::class.java)
         // static backdrop... for now
-        intent.putExtra(LISTING_BACKDROP, "https://s3-media2.fl.yelpcdn.com/bphoto/zgjSt_RGjXQMJxYxYSo-bQ/l.jpg")
+        intent.putExtra(LISTING_BACKDROP, "http://placeimg.com/640/360/any")
         intent.putExtra(LISTING_NAME, listing.listingTitle)
         intent.putExtra(LISTING_PRICE, "$${listing.askingPrice}")
         intent.putExtra(LISTING_DESCRIPTION, listing.description)
         intent.putExtra(LISTING_LOCATION, "${listing.city}, ${listing.state}")
-        intent.putExtra(LISTING_USER, listing.userName)
         startActivity(intent)
     }
 }

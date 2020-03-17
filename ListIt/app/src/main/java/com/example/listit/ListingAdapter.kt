@@ -46,7 +46,7 @@ class ListingAdapter (
 
         fun bind(listing: Listing) {
             // Image placeholder... for now.
-            val imageURL = "https://s3-media2.fl.yelpcdn.com/bphoto/zgjSt_RGjXQMJxYxYSo-bQ/l.jpg"
+            val imageURL = "http://placeimg.com/640/360/any"
 
             Glide.with(itemView)
                 .load(imageURL)
