@@ -1,17 +1,18 @@
 package com.example.listit
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var listing: RecyclerView
-    private lateinit var listingAdapter: ListingAdapter
+    lateinit var listingAdapter: ListingAdapter
     private lateinit var listingLayoutMgr: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         add_listing.setOnClickListener { startActivity(Intent(this, ListingCreate::class.java)) }
+        //add_listing.setOnClickListener { startActivityForResult(Intent(this, ListingCreate::class.java), 1) }
     }
 
     private fun onListingsFetched(listings: List<Listing>) {

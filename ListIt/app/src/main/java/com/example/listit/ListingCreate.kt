@@ -14,12 +14,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.mongodb.stitch.android.core.Stitch
+import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient
+import com.mongodb.stitch.core.auth.providers.anonymous.AnonymousCredential
 import kotlinx.android.synthetic.main.activity_listing_create.*
+import org.bson.Document
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
+//import org.litote.kmongo.*
 
 
 class ListingCreate : AppCompatActivity() {
@@ -33,7 +38,9 @@ class ListingCreate : AppCompatActivity() {
         // set onClickListeners for buttons
         gallery_upload.setOnClickListener { choosePhotoFromGallery() }
         camera_upload.setOnClickListener { takePhotoFromCamera() }
-        submit.setOnClickListener { Toast.makeText(this, "Pressed the submit button.", Toast.LENGTH_LONG).show() }
+        submit.setOnClickListener { createListing() }
+
+        Stitch.initializeDefaultAppClient(resources.getString(R.string.my_app_id))
     }
 
     // Checks is permissions have been granted
@@ -166,5 +173,40 @@ class ListingCreate : AppCompatActivity() {
         }
 
         return ""
+    }
+
+    private fun createListing() {
+        val stitchAppClient = Stitch.getDefaultAppClient()
+
+        stitchAppClient.auth.loginWithCredential(AnonymousCredential())
+            .addOnSuccessListener {
+                //Toast.makeText(this, getString(R.string.mongo_write_success), Toast.LENGTH_LONG).show()
+
+                val mongoClient = stitchAppClient.getServiceClient(
+                    RemoteMongoClient.factory,
+                    "mongodb-atlas"
+                )
+
+                val myCollection = mongoClient.getDatabase("listing_db")
+                    .getCollection("listing")
+
+                val documentData = Document()
+                documentData["listing_title"] = title_input.text.toString()
+                documentData["asking_price"] = price_input.text.toString().toInt()
+                documentData["city"] = city_input.text.toString()
+                documentData["state"] = state_select.selectedItem.toString()
+                documentData["description"] = description_input.text.toString()
+                documentData["timestamp"] = Date().time
+                documentData["user_id"] = it.id
+
+                myCollection.insertOne(documentData)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, getString(R.string.mongo_write_success), Toast.LENGTH_LONG).show()
+
+                        // Commented out as it causes the app to crash!
+                        //MainActivity().listingAdapter.notifyDataSetChanged()
+                        super.finish()
+                    }
+            }
     }
 }
